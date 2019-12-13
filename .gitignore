@@ -1,0 +1,4 @@
+.idea
+*.iml
+/tensquare_article/target/
+/tensquare_common/target/
