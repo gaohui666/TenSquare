@@ -31,6 +31,11 @@ public class ArticleService {
 
     public void add(Article article) {
         article.setId(idWorker.nextId() + "");
+
+        article.setVisits(0);
+        article.setThumbup(0);
+        article.setComment(0);
+
         articleDao.insert(article);
     }
 
@@ -46,16 +51,18 @@ public class ArticleService {
         articleDao.update(article,wrapper);
     }
 
+    //删除
     public void deleteById(String id) {
         articleDao.deleteById(id);
     }
 
+    //分页
     public Page<Article> findByPage(Integer page, Integer size, Map<String, Object> map) {
         //设置查询条件
         EntityWrapper<Article> wrapper = new EntityWrapper<>();
         Set<String> keySet = map.keySet();
         for (String key : keySet) {
-            //相当于动态sql
+            //相当于动态sql，第一个参数是否把后面的条件加入到查询条件中
             wrapper.eq(map.get(key) != null,key,map.get(key));
         }
         //设置分页参数

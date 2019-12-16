@@ -65,7 +65,7 @@ public class ArticleController {
         //根据分页条件查询
         Page<Article> pageData = articleService.findByPage(page,size,map);
         //封装分页返回对象
-        PageResult<Article> pageResult = new PageResult<Article>(pageData.getTotal(),pageData.getSize());
+        PageResult<Article> pageResult = new PageResult<Article>(pageData.getTotal(),pageData.getRecords());
         return new Result(true,StatusCode.OK,"查询成功",pageResult);
     }
 
