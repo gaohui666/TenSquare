@@ -23,4 +23,12 @@ public class CommentService {
         Comment comment = commentReopsitory.findById(id).get();
         return comment;
     }
+
+    public void update(Comment comment) {
+        commentReopsitory.save(comment);
+    }
+
+    public void deleteById(String id) {
+        commentReopsitory.deleteById(id);
+    }
 }

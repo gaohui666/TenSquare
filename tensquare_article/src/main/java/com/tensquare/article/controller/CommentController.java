@@ -5,10 +5,7 @@ import com.tensquare.article.service.CommentService;
 import com.tensquare.entity.Result;
 import com.tensquare.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,5 +28,20 @@ public class CommentController {
         return new Result(true,StatusCode.OK,"查询成功",comment);
     }
 
+    //修改
+    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    public Result update(@PathVariable String id,
+                         @RequestBody Comment comment) {
+        comment.set_id(id);
+        commentService.update(comment);
+        return new Result(true, StatusCode.OK, "修改成功");
+    }
+
+    //删除
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    public Result deleteById(@PathVariable String id) {
+        commentService.deleteById(id);
+        return new Result(true, StatusCode.OK, "删除成功");
+    }
 
 }
