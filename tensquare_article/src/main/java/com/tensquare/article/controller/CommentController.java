@@ -28,6 +28,13 @@ public class CommentController {
         return new Result(true,StatusCode.OK,"查询成功",comment);
     }
 
+    //新增
+    @RequestMapping(method = RequestMethod.POST)
+    public Result save(@RequestBody Comment comment) {
+        commentService.save(comment);
+        return new Result(true, StatusCode.OK, "新增成功");
+    }
+
     //修改
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     public Result update(@PathVariable String id,
