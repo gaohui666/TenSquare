@@ -14,6 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/article")
+@CrossOrigin
 public class ArticleController {
 
     @Autowired
@@ -73,6 +74,8 @@ public class ArticleController {
     //......
     @GetMapping("/exception")
     public Result test() throws Exception {
-        throw new Exception("测试统一异常处理");
+//        int i = 1/0;
+//        return null;
+         throw new Exception("测试统一异常处理");
     }
 }
