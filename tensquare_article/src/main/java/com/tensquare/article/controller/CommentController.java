@@ -29,14 +29,14 @@ public class CommentController {
     }
 
     //新增
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public Result save(@RequestBody Comment comment) {
         commentService.save(comment);
         return new Result(true, StatusCode.OK, "新增成功");
     }
 
     //修改
-    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    @PutMapping("{id}")
     public Result update(@PathVariable String id,
                          @RequestBody Comment comment) {
         comment.set_id(id);
@@ -45,7 +45,7 @@ public class CommentController {
     }
 
     //删除
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("{id}")
     public Result deleteById(@PathVariable String id) {
         commentService.deleteById(id);
         return new Result(true, StatusCode.OK, "删除成功");
