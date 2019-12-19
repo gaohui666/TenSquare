@@ -22,6 +22,7 @@ public class CommentController {
         return new Result(true, StatusCode.OK,"查询成功",list);
     }
 
+    //根据id查询
     @GetMapping("/{id}")
     public Result findById(@PathVariable String id){
         Comment comment = commentService.findById(id);
