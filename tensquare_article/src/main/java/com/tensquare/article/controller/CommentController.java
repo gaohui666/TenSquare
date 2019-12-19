@@ -16,6 +16,7 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
+    //查询所有
     @GetMapping()
     public Result findAll(){
         List<Comment> list = commentService.findAll();
